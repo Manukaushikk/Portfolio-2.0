@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Download, ArrowRight, Sparkles } from "lucide-react";
 import profileImg from '../img/My_Img.jpeg'
+
 const Hero = () => {
   return (
     <section id="about" className="min-h-screen flex items-center py-20 px-6 relative">
@@ -39,23 +40,32 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                <Mail className="h-5 w-5 mr-2" />
-                Let's Connect
-                <ArrowRight className="h-5 w-5 ml-2" />
-              </Button>
+              <a href="#contact">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  <Mail className="h-5 w-5 mr-2" />
+                  Let's Connect
+                  <ArrowRight className="h-5 w-5 ml-2" />
+                </Button>
+              </a>
 
               <Button
                 variant="outline"
                 size="lg"
                 className="px-8 py-3 rounded-full border-2 hover:bg-blue-50 dark:hover:bg-blue-900/20 transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "../../public/pdfs/Manu_CV.pdf";
+                  link.download = "Manu_Kaushik_CV.pdf";
+                  link.click();
+                }}
               >
                 <Download className="h-5 w-5 mr-2" />
                 Download CV
               </Button>
+
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-8">
@@ -129,7 +139,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, Linkedin, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "emailjs-com";  // <-- Import EmailJS here
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,11 +19,29 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
-    setFormData({ name: "", email: "", message: "" });
+
+    // Use EmailJS to send email
+    emailjs.send(
+      "service_p7xk0gn",
+      "template_63uliei",
+      formData,
+      "41yc0uyTQWDUt4Mcd"
+    )
+      .then(() => {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. I'll get back to you soon!",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        toast({
+          title: "Error",
+          description: "Failed to send message, please try again later.",
+          variant: "destructive",
+        });
+        console.error("EmailJS error:", error);
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,6 +50,7 @@ const Contact = () => {
       [e.target.name]: e.target.value
     });
   };
+
 
   const contactInfo = [
     {
