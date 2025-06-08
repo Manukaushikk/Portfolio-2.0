@@ -1,7 +1,3 @@
-Here's a polished version of your GitHub project README in markdown format, complete with appropriate emojis to make it more engaging and easy to read.
-
----
-
 # 🖥️ **Manu Kaushik's Web Project** 🌐
 
 Welcome to this complete web project crafted by **Manu Kaushik** (manukaushik), a passionate Software Engineer specializing in React.js, TypeScript, and modern web technologies. This project showcases my skills and the kind of digital experiences I build.
